@@ -89,7 +89,8 @@
       onReady: function Wiki2_onReady()
       {
         Alfresco.Wiki2Toolbar.superclass.onReady.call(this);
-        YAHOO.util.Dom.setStyle([this.id + '-createContent-button', this.id + '-newFolder-button-button', this.id + '-showFolders-button'],'display', 'none');
+        alert(this.id);
+        YAHOO.util.Dom.setStyle([this.id + '-createContent-button', this.id + '-newFolder-button-button', 'template_x002e_categories_x002e_wiki2', 'template_x002e_documentlist_x002e_wiki2_x0023_default-showFolders-button'],'display', 'none');
       }
    },true);
 })();
