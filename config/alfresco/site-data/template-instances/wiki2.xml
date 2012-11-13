@@ -47,13 +47,13 @@
       <!-- Filter -->
       <component>
          <region-id>filter</region-id>
-         <url>/components/documentlibrary/filter</url>
+         <url>/components/wiki2/blank</url>
       </component>
 
       <!-- Tree -->
       <component>
          <region-id>tree</region-id>
-         <url>/components/documentlibrary/tree</url>
+         <url>/components/wiki2/blank</url>
          <properties></properties>
       </component>
 

@@ -49,15 +49,16 @@
     */
    Alfresco.Wiki2Toolbar = function(htmlId)
    {
-      Alfresco.Wiki2Toolbar.superclass.constructor.call(this, "Alfresco.Wiki2Toolbar", htmlId, ["button", "menu", "container"]);
+      Alfresco.DocListToolbar.superclass.constructor.call(this, "Alfresco.Wiki2Toolbar", htmlId, ["button", "menu", "container"]);
 
+      
       // Initialise prototype properties
       this.selectedFiles = [];
       this.currentFilter = {};
       this.dynamicControls = [];
       this.doclistMetadata = {};
       this.actionsView = "browse";
-
+      
       // Decoupled event listeners
       YAHOO.Bubbling.on("filterChanged", this.onFilterChanged, this);
       YAHOO.Bubbling.on("deactivateAllControls", this.onDeactivateAllControls, this);
@@ -70,6 +71,7 @@
       YAHOO.Bubbling.on("documentDragOver", this.onDocumentDragOver, this);
       YAHOO.Bubbling.on("documentDragOut", this.onDocumentDragOut, this);
       YAHOO.Bubbling.on("registerAction", this.onRegisterAction, this);
+     
       
       return this;
    };
@@ -84,18 +86,10 @@
     */
    YAHOO.lang.augmentObject(Alfresco.Wiki2Toolbar.prototype,
    {
-      /**
-       * Object container for initialization options
-       *
-       * @property options
-       * @type object
-       */
-      options:
+      onReady: function Wiki2_onReady()
       {
-    	onReady: function Wiki2_onReady()
-      	{
-    		Alfresco.Wiki2Toolbar.superclass.onReady.call(this);
-      	}
+        Alfresco.Wiki2Toolbar.superclass.onReady.call(this);
+        YAHOO.util.Dom.setStyle([this.id + '-createContent-button', this.id + '-newFolder-button-button', this.id + '-showFolders-button'],'display', 'none');
       }
-   });
-});
+   },true);
+})();
