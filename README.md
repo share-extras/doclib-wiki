@@ -15,3 +15,14 @@ the Ant build script supplied.
 Where `tomcat.home` is the location of your local Tomcat instance where the
 Share webapp `share.war` is deployed.
 
+Repository changes
+------------------
+
+Add the Markdown mimetype to the built-in respository mimetypes in 
+`alfresco/mimetype/mimetype-map.xml`.
+
+         <!-- Markdown  -->
+         <mimetype mimetype="text/x-markdown" display="Markdown">
+            <extension default="true">md</extension>
+         </mimetype>
+
