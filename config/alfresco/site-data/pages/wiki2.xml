@@ -4,6 +4,6 @@
    <title-id>page.wiki.title</title-id>
    <description>The landing page for the wiki</description>
    <description-id>page.wiki.description</description-id>
-   <template-instance>wiki-new</template-instance>
+   <template-instance>wiki2</template-instance>
    <authentication>user</authentication>
 </page>
