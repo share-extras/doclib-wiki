@@ -31,7 +31,7 @@
       <!-- Toolbar -->
       <component>
          <region-id>toolbar</region-id>
-         <url>/components/documentlibrary/toolbar</url>
+         <url>/components/wiki2/toolbar</url>
       </component>
 
       <!-- Documentlist -->
