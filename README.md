@@ -26,3 +26,15 @@ Add the Markdown mimetype to the built-in respository mimetypes in
             <extension default="true">md</extension>
          </mimetype>
 
+To enable inline editing for Markdown content it is necessary to override the Spring bean `evaluator.doclib.action.inlineEditMimetype`.
+
+    <bean id="evaluator.doclib.action.inlineEditMimetype" parent="evaluator.doclib.action.isMimetype">
+      <property name="mimetypes">
+         <list>
+            <value>text/plain</value>
+            <value>text/html</value>
+            <value>text/xml</value>
+            <value>text/x-markdown</value>
+         </list>
+      </property>
+    </bean>
