@@ -1,0 +1,13 @@
+<extension>
+    <modules>
+        <module>
+            <id>Markdown Document Preview</id>
+            <customizations>
+                <customization>
+                    <targetPackageRoot>org.alfresco.components</targetPackageRoot>              
+                    <sourcePackageRoot>org.alfresco.customization.wiki2</sourcePackageRoot>
+                </customization>
+            </customizations>
+        </module>
+    </modules>
+</extension>
