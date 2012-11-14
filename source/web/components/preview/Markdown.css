@@ -1,3 +1,4 @@
 .web-preview .previewer.Markdown {
 	text-align: left;
+	max-height: none;
 }

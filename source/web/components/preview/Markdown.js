@@ -58,7 +58,9 @@
             url: this.wp.getContentUrl(),
             successCallback: {
                fn: function onSuccess(p_obj) {
-                  this.wp.getPreviewerElement().innerHTML = p_obj.serverResponse.responseText;
+                  //var converter = new Markdown.getSanitizingConverter();
+                  var converter = new Markdown.Converter();
+                  this.wp.getPreviewerElement().innerHTML = converter.makeHtml(p_obj.serverResponse.responseText);
                },
                scope: this
             }
