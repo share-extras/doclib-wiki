@@ -1,0 +1,37 @@
+<alfresco-config>
+
+   <!-- cm:content type (existing nodes) -->
+   <config evaluator="node-type" condition="cm:content">
+      <forms>
+         <!-- Default form configuration for the cm:content type -->
+         <form id="doclib-inline-edit">
+            <field-visibility>
+               <hide id="cm:title" />
+               <hide id="cm:description" />
+            </field-visibility>
+            <appearance>
+            <!-- 
+               <type name="content" template="/org/alfresco/components/form/controls/content.ftl" />-->
+               <field id="cm:content">
+                  <control template="/org/alfresco/components/form/controls/pagedown.ftl">
+                  	 <control-param name="forceEditor">true</control-param>
+                  </control>
+               </field>
+            </appearance>
+         </form>
+      </forms>
+   </config>
+   
+        <config>
+                <forms>
+                <dependencies>
+                 <!-- Include some extra assets --> 
+	                       <js src="/components/preview/Markdown.Converter.js" />
+	                       <js src="/components/preview/Markdown.Sanitizer.js" />
+	                       <js src="/components/preview/Markdown.Editor.js" />
+	                       <css src="/components/preview/Markdown.Editor.css" />
+                </dependencies>
+                </forms>
+        </config>
+
+</alfresco-config>
