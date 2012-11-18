@@ -56,7 +56,7 @@
             <div id="wmd-button-bar-${fieldHtmlId}"></div>
    <textarea id="wmd-input-${fieldHtmlId}" name="${field.name}" rows="${rows}" columns="${columns}" tabindex="0"
              <#if field.description??>title="${field.description?html}"</#if>
-             <#if field.control.params.styleClass??>class="${field.control.params.styleClass}"</#if>
+             class="${field.control.params.styleClass!'wmd-input'}"
              <#if field.control.params.style??>style="${field.control.params.style}"</#if>
              <#if field.disabled && !(field.control.params.forceEditable?? && field.control.params.forceEditable == "true")>disabled="true"</#if>><#if jsDisabled>${field.content?html}</#if></textarea>
       <div id="wmd-preview-${fieldHtmlId}" class="wmd-preview"></div>
