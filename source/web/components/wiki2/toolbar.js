@@ -89,7 +89,24 @@
       onReady: function Wiki2_onReady()
       {
         Alfresco.Wiki2Toolbar.superclass.onReady.call(this);
-        YAHOO.util.Dom.setStyle([this.id + '-createContent-button', this.id + '-newFolder-button-button', 'template_x002e_categories_x002e_wiki2', 'template_x002e_documentlist_x002e_wiki2_x0023_default-showFolders-button'],'display', 'none');
-      }
+        YAHOO.util.Dom.setStyle([this.id + '-createContent-button', this.id + '-newFolder-button', 'template_x002e_categories_x002e_wiki2', 'template_x002e_documentlist_x002e_wiki2_x0023_default-showFolders-button'],'display', 'none');
+        
+        // Register buttons with YUI
+        this.widgets.newPageButton = Alfresco.util.createYUIButton(this, "createPage-button", this.onNewPageClick);
+      },
+      
+      /**
+       * Dispatches the browser to the create wiki page
+       *
+       * @method onNewPageClick
+       * @param e {object} DomEvent
+       */
+      onNewPageClick: function Wiki2_onNewPageClick(e)
+      {
+         var url = Alfresco.constants.URL_PAGECONTEXT + "site/" + this.options.siteId + 
+         	"/create-content?destination=" + this.doclistMetadata.parent.nodeRef +
+         	"&itemId=cm:content&mimeType=text/x-markdown";
+         window.location.href = url;
+      },
    },true);
 })();
