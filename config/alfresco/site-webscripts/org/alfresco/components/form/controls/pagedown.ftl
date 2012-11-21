@@ -7,13 +7,15 @@
 
 <#-- NOTE: content properties are not shown at all in view mode -->
 
+<#if context.properties.mimeType == "text/x-markdown"><#assign textareaHtmlId="wmd-input-${fieldHtmlId}" /><#else><#assign textareaHtmlId="${fieldHtmlId}" /></#if>
+
 <#if form.mode != "view">
 <div class="form-field" id="${fieldHtmlId}-field">
    <#if jsDisabled == false>
    <script type="text/javascript">//<![CDATA[
    (function()
    {
-      new Alfresco.ContentControl("wmd-input-${fieldHtmlId}").setOptions(
+      new Alfresco.ContentControl("${textareaHtmlId}").setOptions(
       {
          <#if form.mode == "view" || (field.disabled && !(field.control.params.forceEditable?? && field.control.params.forceEditable == "true"))>disabled: true,</#if>
          currentValue: "${field.value?js_string}",
@@ -36,7 +38,8 @@
       }).setMessages(
          ${messages}
       );
-      YAHOO.util.Event.onContentReady("wmd-input-${fieldHtmlId}", function() {
+      <#if context.properties.mimeType == "text/x-markdown">
+      YAHOO.util.Event.onContentReady("${textareaHtmlId}", function() {
         var converter2 = new Markdown.Converter();
         
         var help = function () { alert("Do you need help?"); }
@@ -48,18 +51,21 @@
         
         editor2.run();
         });
+      </#if>
    })();
    //]]></script>
    </#if>
-   <label for="wmd-input-${fieldHtmlId}">${field.label?html}:<#if field.mandatory><span class="mandatory-indicator">${msg("form.required.fields.marker")}</span></#if></label>
+   <label for="${textareaHtmlId}">${field.label?html}:<#if field.mandatory><span class="mandatory-indicator">${msg("form.required.fields.marker")}</span></#if></label>
 <div class="wmd-panel">
+      <#if context.properties.mimeType == "text/x-markdown">
             <div id="wmd-button-bar-${fieldHtmlId}"></div>
-   <textarea id="wmd-input-${fieldHtmlId}" name="${field.name}" rows="${rows}" columns="${columns}" tabindex="0"
+      </#if>
+   <textarea id="${textareaHtmlId}" name="${field.name}" rows="${rows}" columns="${columns}" tabindex="0"
              <#if field.description??>title="${field.description?html}"</#if>
              class="${field.control.params.styleClass!'wmd-input'}"
              <#if field.control.params.style??>style="${field.control.params.style}"</#if>
              <#if field.disabled && !(field.control.params.forceEditable?? && field.control.params.forceEditable == "true")>disabled="true"</#if>><#if jsDisabled>${field.content?html}</#if></textarea>
-      <div id="wmd-preview-${fieldHtmlId}" class="wmd-preview"></div>
+      <#if context.properties.mimeType == "text/x-markdown"><div id="wmd-preview-${fieldHtmlId}" class="wmd-preview"></div></#if>
       </div>
 </div>
 </#if>
