@@ -54,7 +54,7 @@
          	<evaluator negate="true">evaluator.doclib.metadata.isWikiPage</evaluator>
          </action>
          <action id="wiki-duplicate" type="javascript" label="actions.wiki.duplicate"
-               icon="../../../components/documentlibrary/images/duplicate-row-16.png">
+               icon="../../../components/documentlibrary/actions/document-copy-to">
             <param name="function">onActionDuplicate</param>
             <evaluator negate="true">evaluator.doclib.action.isLocked</evaluator>
          	<evaluator>evaluator.doclib.metadata.isWikiPage</evaluator>
