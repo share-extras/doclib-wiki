@@ -1,0 +1,10 @@
+<beans>
+   <!-- Display Template: Dictionary Model -->
+   <bean id="evaluator.doclib.metadata.isWikiPage" parent="evaluator.doclib.action.nodeType">
+      <property name="types">
+         <list>
+            <value>wiki:page</value>
+         </list>
+      </property>
+   </bean>
+</beans>

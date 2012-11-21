@@ -44,6 +44,41 @@
       </forms>
    </config>
    
+   <config evaluator="string-compare" condition="DocLibActions">
+      <actions>
+         <!-- Hide certain actions in the cloud -->
+         <action id="document-copy">
+         	<evaluator negate="true">evaluator.doclib.metadata.isWikiPage</evaluator>
+         </action>
+         <action id="document-move">
+         	<evaluator negate="true">evaluator.doclib.metadata.isWikiPage</evaluator>
+         </action>
+         <action id="wiki-duplicate" type="javascript" label="actions.wiki.duplicate"
+               icon="../../../components/documentlibrary/images/duplicate-row-16.png">
+            <param name="function">onActionDuplicate</param>
+            <evaluator negate="true">evaluator.doclib.action.isLocked</evaluator>
+         	<evaluator>evaluator.doclib.metadata.isWikiPage</evaluator>
+         </action>
+      </actions>
+   </config>
+   
+   <config evaluator="string-compare" condition="DocumentLibrary">
+      <metadata-templates>
+         <!-- Wiki page -->
+         <template id="page">
+         	<evaluator>evaluator.doclib.metadata.isWikiPage</evaluator>
+            <banner index="10" id="lockBanner" evaluator="evaluator.doclib.metadata.hasLockBanner">{lockBanner}</banner>
+            <banner index="20" id="syncTransientError" evaluator="evaluator.doclib.metadata.hasSyncTransientErrorBanner">{syncTransientError}</banner>
+            <banner index="30" id="syncFailed" evaluator="evaluator.doclib.metadata.hasSyncFailedBanner">{syncFailed}</banner>
+            <line index="10" id="date">{date}{size}</line>
+            <line index="20" id="description" view="detailed">{wikiPage.abstract}</line>
+            <line index="30" id="tags" view="detailed">{tags}</line>
+            <line index="40" id="categories" view="detailed" evaluator="evaluator.doclib.metadata.hasCategories">{categories}</line>
+            <line index="50" id="social" view="detailed">{social}</line>
+         </template>
+      </metadata-templates>
+   </config>
+   
         <config>
                 <forms>
                 <dependencies>
@@ -52,6 +87,7 @@
 	                       <js src="/components/preview/Markdown.Sanitizer.js" />
 	                       <js src="/components/preview/Markdown.Editor.js" />
 	                       <css src="/components/preview/Markdown.Editor.css" />
+	                       <js src="/components/wiki2/actions.js" />
                 </dependencies>
                 </forms>
         </config>
