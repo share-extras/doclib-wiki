@@ -36,7 +36,7 @@
                         failureCount: failureCount
                      });
             	   }
-            	   var webscriptName = "copy-to/node/{nodeRef}",
+            	   var webscriptName = "duplicate/node/{nodeRef}",
                      nodeRef = new Alfresco.util.NodeRef(parentNodeRef);
                      
                   this.modules.actions.genericAction(
