@@ -60,6 +60,11 @@
          	<evaluator>evaluator.doclib.metadata.isWikiPage</evaluator>
          </action>
       </actions>
+      <actionGroups>
+      	<actionGroup id="document-browse">
+      		<action index="499" id="wiki-duplicate"/>
+      	</actionGroup>
+      </actionGroups>
    </config>
    
    <config evaluator="string-compare" condition="DocumentLibrary">

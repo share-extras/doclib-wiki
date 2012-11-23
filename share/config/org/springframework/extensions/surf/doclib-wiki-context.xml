@@ -29,4 +29,14 @@
      		</list>
   		</property>
 	</bean>
+	
+	<!-- Additional Share message bundle -->
+   <bean id="doclib-wiki.resources" class="org.springframework.extensions.surf.util.ResourceBundleBootstrapComponent">
+      <property name="resourceBundles">
+         <list>
+            <value>alfresco.messages.doclib-wiki</value>
+         </list>
+      </property>
+   </bean>
+	
 </beans>
