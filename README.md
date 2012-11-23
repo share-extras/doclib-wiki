@@ -4,8 +4,8 @@ Document Library Wiki Implementation for Share
 This project provides an alternative implementation of the Alfresco Share
 wiki re-using the Document Library components.
 
-was developed by Will Abson as an example implementation for the Alfresco
-Developer Conference 2012.
+The code was developed by Will Abson and Nathan McMinn at the Alfresco 
+Developer Conference 2012 Hackathon.
 
 To build and deploy the project into a local Tomcat instance for testing, use
 the Ant build script supplied.
