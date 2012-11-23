@@ -47,10 +47,10 @@
    <config evaluator="string-compare" condition="DocLibActions">
       <actions>
          <!-- Hide certain actions in the cloud -->
-         <action id="document-copy">
+         <action id="document-copy-to">
          	<evaluator negate="true">evaluator.doclib.metadata.isWikiPage</evaluator>
          </action>
-         <action id="document-move">
+         <action id="document-move-to">
          	<evaluator negate="true">evaluator.doclib.metadata.isWikiPage</evaluator>
          </action>
          <action id="wiki-duplicate" type="javascript" label="actions.wiki.duplicate"
