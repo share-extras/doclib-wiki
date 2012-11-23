@@ -22,7 +22,7 @@
             text: Alfresco.util.message("message.duplicate.enterName"),
             input: "text",
             callback: {
-               fn: function(p_obj) {
+               fn: function(p_name) {
             	   var parentNodeRef = record.parent.nodeRef;
             	   var fnSuccess = function(p_data)
             	   {
@@ -72,7 +72,8 @@
                         dataObj:
                         {
                            nodeRefs: [record.nodeRef],
-                           parentId: parentNodeRef
+                           parentId: parentNodeRef,
+                           name: p_name
                         }
                      }
                   });
