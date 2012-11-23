@@ -34,7 +34,7 @@
    <bean id="doclib-wiki.resources" class="org.springframework.extensions.surf.util.ResourceBundleBootstrapComponent">
       <property name="resourceBundles">
          <list>
-            <value>alfresco.messages.doclib-wiki</value>
+            <value>alfresco.messages.doclib-wiki-slingshot</value>
          </list>
       </property>
    </bean>
