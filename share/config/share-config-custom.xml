@@ -82,6 +82,11 @@
             <line index="50" id="social" view="detailed">{social}</line>
          </template>
       </metadata-templates>
+      <types>
+         <type name="cm:content">
+         	<subtype name="wiki:page" />
+         </type>
+      </types>
    </config>
    
         <config>
