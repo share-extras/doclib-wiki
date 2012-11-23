@@ -18,7 +18,8 @@ function runAction(p_params)
       destNode = p_params.destNode,
       files = p_params.files,
       file, fileNode, result, nodeRef,
-      fromSite, copiedNode;
+      fromSite, copiedNode,
+      fileName;
 
    // Must have array of files
    if (!files || files.length == 0)
@@ -28,10 +29,14 @@ function runAction(p_params)
    }
 
    // Must have new name
-   if (!json.name)
+   if (!json.get("name"))
    {
       status.setCode(status.STATUS_BAD_REQUEST, "No name specified");
       return;
+   }
+   else
+   {
+      fileName = json.get("name");
    }
 
    for (file in files)
@@ -63,7 +68,7 @@ function runAction(p_params)
 
             // copy the node and rename
             copiedNode = fileNode.copy(destNode);
-            copiedNode.properties.name = "" + json.name;
+            copiedNode.properties.name = "" + fileName;
             copiedNode.save();
    
             result.nodeRef = copiedNode.nodeRef.toString();
