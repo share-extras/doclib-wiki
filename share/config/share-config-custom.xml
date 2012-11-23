@@ -1,17 +1,91 @@
 <alfresco-config>
 
-   <!-- cm:content type (existing nodes) -->
-   <config evaluator="node-type" condition="cm:content">
+   <!-- wiki:page type (existing nodes) -->
+   <config evaluator="node-type" condition="wiki:page">
       <forms>
-         <!-- Default form configuration for the cm:content type -->
-         <form id="doclib-inline-edit">
+         <form>
             <field-visibility>
+            	<show id="cm:name" />
                <hide id="cm:title" />
                <hide id="cm:description" />
+               <show id="mimetype" />
+               <show id="cm:author" force="true" />
+               <show id="size" for-mode="view" />
+               <show id="cm:creator" for-mode="view" />
+               <show id="cm:created" for-mode="view" />
+               <show id="cm:modifier" for-mode="view" />
+               <show id="cm:modified" for-mode="view" />
+
+               <!-- tags and categories -->
+               <show id="cm:taggable" for-mode="edit" force="true" />
+               <show id="cm:categories" />
             </field-visibility>
             <appearance>
-            <!-- 
-               <type name="content" template="/org/alfresco/components/form/controls/content.ftl" />-->
+            	<field id="mimetype">
+                  <control template="/org/alfresco/components/form/controls/mimetype.ftl" />
+               </field>
+               <field id="size">
+                  <control template="/org/alfresco/components/form/controls/size.ftl" />
+               </field>
+               <field id="cm:taggable">
+                  <control>
+                     <control-param name="compactMode">true</control-param>
+                     <control-param name="params">aspect=cm:taggable</control-param>
+                     <control-param name="createNewItemUri">/api/tag/workspace/SpacesStore</control-param>
+                     <control-param name="createNewItemIcon">tag</control-param>
+                  </control>
+               </field>
+               <field id="cm:categories">
+                  <control>
+                     <control-param name="compactMode">true</control-param>
+                  </control>
+               </field>
+            </appearance>
+         </form>
+         <form id="doclib-simple-metadata">
+            <field-visibility>
+            	<show id="cm:name" />
+               <hide id="cm:title" />
+               <hide id="cm:description" />
+               <!-- tags and categories -->
+               <show id="cm:taggable" for-mode="edit" force="true" />
+               <show id="cm:categories" />
+            </field-visibility>
+            <edit-form template="../documentlibrary/forms/doclib-simple-metadata.ftl" />
+            <appearance>
+               <field id="cm:name">
+                 <control>
+                    <control-param name="maxLength">255</control-param>
+                 </control>
+               </field>
+               <field id="cm:taggable">
+                  <control>
+                     <control-param name="compactMode">true</control-param>
+                     <control-param name="params">aspect=cm:taggable</control-param>
+                     <control-param name="createNewItemUri">/api/tag/workspace/SpacesStore</control-param>
+                     <control-param name="createNewItemIcon">tag</control-param>
+                  </control>
+               </field>
+               <field id="cm:categories">
+                  <control>
+                     <control-param name="compactMode">true</control-param>
+                  </control>
+               </field>
+            </appearance>
+         </form>
+         <form id="doclib-inline-edit">
+            <field-visibility>
+            	<show id="cm:name" />
+               <hide id="cm:title" />
+               <hide id="cm:description" />
+               <show id="cm:content" force="true" />
+            </field-visibility>
+            <appearance>
+            	<field id="cm:name">
+                 <control>
+                    <control-param name="maxLength">255</control-param>
+                 </control>
+               </field>
                <field id="cm:content">
                   <control template="/org/alfresco/components/form/controls/pagedown.ftl">
                   	 <control-param name="forceEditor">true</control-param>
@@ -23,20 +97,37 @@
    </config>
    
    <!-- cm:content type (creating nodes) -->
-   <config evaluator="model-type" condition="cm:content">
+   <config evaluator="model-type" condition="wiki:page">
       <forms>
          <!-- Default Create Content form -->
          <form>
             <field-visibility>
+            	<show id="cm:name" />
                <hide id="cm:title" />
                <hide id="cm:description" />
+               <show id="cm:content" force="true" />
+               <show id="mimetype" />
+               <show id="app:editInline" force="true" />
             </field-visibility>
             <appearance>
-            <!-- 
-               <type name="content" template="/org/alfresco/components/form/controls/content.ftl" />-->
+               <field id="cm:name">
+                 <control>
+                    <control-param name="maxLength">255</control-param>
+                 </control>
+               </field>
                <field id="cm:content">
                   <control template="/org/alfresco/components/form/controls/pagedown.ftl">
                   	 <control-param name="forceEditor">true</control-param>
+                  </control>
+               </field>
+               <field id="mimetype">
+                  <control template="/org/alfresco/components/form/controls/hidden.ftl">
+                     <control-param name="contextProperty">mimeType</control-param>
+                  </control>
+               </field>
+               <field id="app:editInline">
+                  <control template="/org/alfresco/components/form/controls/hidden.ftl">
+                     <control-param name="contextProperty">editInline</control-param>
                   </control>
                </field>
             </appearance>
