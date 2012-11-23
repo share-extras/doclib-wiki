@@ -105,7 +105,7 @@
       {
          var url = Alfresco.constants.URL_PAGECONTEXT + "site/" + this.options.siteId + 
          	"/create-content?destination=" + this.doclistMetadata.parent.nodeRef +
-         	"&itemId=cm:content&mimeType=text/x-markdown";
+         	"&itemId=wiki:page&mimeType=text/x-markdown";
          window.location.href = url;
       },
    },true);
