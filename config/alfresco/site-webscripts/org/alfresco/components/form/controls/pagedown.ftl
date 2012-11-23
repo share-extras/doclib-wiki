@@ -6,8 +6,8 @@
 <#if form.capabilities?? && form.capabilities.javascript?? && form.capabilities.javascript == false><#assign jsDisabled=true><#else><#assign jsDisabled=false></#if>
 
 <#-- NOTE: content properties are not shown at all in view mode -->
-
-<#if context.properties.mimeType == "text/x-markdown"><#assign textareaHtmlId="wmd-input-${fieldHtmlId}" /><#else><#assign textareaHtmlId="${fieldHtmlId}" /></#if>
+<#assign mimeType = field.value?split('|')[1]?split('=')[1] />
+<#if mimeType == "text/x-markdown"><#assign textareaHtmlId="wmd-input-${fieldHtmlId}" /><#else><#assign textareaHtmlId="${fieldHtmlId}" /></#if>
 
 <#if form.mode != "view">
 <div class="form-field" id="${fieldHtmlId}-field">
@@ -38,7 +38,7 @@
       }).setMessages(
          ${messages}
       );
-      <#if context.properties.mimeType == "text/x-markdown">
+      <#if mimeType == "text/x-markdown">
       YAHOO.util.Event.onContentReady("${textareaHtmlId}", function() {
         var converter2 = new Markdown.Converter();
         
@@ -57,7 +57,7 @@
    </#if>
    <label for="${textareaHtmlId}">${field.label?html}:<#if field.mandatory><span class="mandatory-indicator">${msg("form.required.fields.marker")}</span></#if></label>
 <div class="wmd-panel">
-      <#if context.properties.mimeType == "text/x-markdown">
+      <#if mimeType == "text/x-markdown">
             <div id="wmd-button-bar-${fieldHtmlId}"></div>
       </#if>
    <textarea id="${textareaHtmlId}" name="${field.name}" rows="${rows}" columns="${columns}" tabindex="0"
@@ -65,7 +65,7 @@
              class="${field.control.params.styleClass!'wmd-input'}"
              <#if field.control.params.style??>style="${field.control.params.style}"</#if>
              <#if field.disabled && !(field.control.params.forceEditable?? && field.control.params.forceEditable == "true")>disabled="true"</#if>><#if jsDisabled>${field.content?html}</#if></textarea>
-      <#if context.properties.mimeType == "text/x-markdown"><div id="wmd-preview-${fieldHtmlId}" class="wmd-preview"></div></#if>
+      <#if mimeType == "text/x-markdown"><div id="wmd-preview-${fieldHtmlId}" class="wmd-preview"></div></#if>
       </div>
 </div>
 </#if>
