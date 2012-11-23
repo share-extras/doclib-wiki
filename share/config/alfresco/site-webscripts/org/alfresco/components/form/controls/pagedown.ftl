@@ -6,7 +6,7 @@
 <#if form.capabilities?? && form.capabilities.javascript?? && form.capabilities.javascript == false><#assign jsDisabled=true><#else><#assign jsDisabled=false></#if>
 
 <#-- NOTE: content properties are not shown at all in view mode -->
-<#assign mimeType = field.value?split('|')[1]?split('=')[1] />
+<#assign mimeType = args.mimeType!field.value?split('|')[1]?split('=')[1] />
 <#if mimeType == "text/x-markdown"><#assign textareaHtmlId="wmd-input-${fieldHtmlId}" /><#else><#assign textareaHtmlId="${fieldHtmlId}" /></#if>
 
 <#if form.mode != "view">
