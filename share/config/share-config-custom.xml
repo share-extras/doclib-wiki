@@ -137,7 +137,7 @@
    
    <config evaluator="string-compare" condition="DocLibActions">
       <actions>
-         <!-- Hide certain actions in the cloud -->
+         <!-- Hide copy and move for wiki pages -->
          <action id="document-copy-to">
          	<evaluator negate="true">evaluator.doclib.metadata.isWikiPage</evaluator>
          </action>
