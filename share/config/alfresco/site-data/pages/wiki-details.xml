@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<page>
+   <title>Wiki Page Details</title>
+   <title-id>page.wikiPageDetails.title</title-id>
+   <description>Wiki page details</description>
+   <description-id>page.wikiPageDetails.description</description-id>
+   <template-instance>document-details</template-instance>
+   <authentication>user</authentication>
+</page>
